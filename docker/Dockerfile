@@ -1,4 +1,4 @@
-FROM arm64v8/openjdk:22-ea-22-jdk-bullseye
+FROM openjdk:22-ea-22-jdk-bullseye
 
 
 ARG kafkaversion=3.3.1
