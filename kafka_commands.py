@@ -1,8 +1,8 @@
 bootstrap_servers = "kafka-0.kafka-svc.kafka.svc.cluster.local:19093,kafka-1.kafka-svc.kafka.svc.cluster.local:19093,kafka-2.kafka-svc.kafka.svc.cluster.local:19093"
-topic = "order_order__init"
+topic = "topic_name"
 replication_factor = 3
 partitions = 1
-consumers_group = 'consumers'
+consumers_group = 'consumer_group_name'
 
 kafka_commands = {
     "Describe topic": f"./kafka-topics.sh --describe --topic {topic} --bootstrap-server {bootstrap_servers}",

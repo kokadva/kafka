@@ -17,9 +17,10 @@ OFFSETS_TOPIC_REPLICATION_FACTOR="${OFFSETS_TOPIC_REPLICATION_FACTOR:-3}"
 TRANSACTION_STATE_LOG_REPLICATION_FACTOR="${TRANSACTION_STATE_LOG_REPLICATION_FACTOR:-3}"
 TRANSACTION_STATE_LOG_MIN_ISR="${TRANSACTION_STATE_LOG_MIN_ISR:-3}"
 DEFAULT_REPLICATION_FACTOR="${DEFAULT_REPLICATION_FACTOR:-3}"
-LOG_RETENTION_HOURS="${LOG_RETENTION_HOURS:-168}"
+LOG_RETENTION_HOURS="${LOG_RETENTION_HOURS:-24}"
+LOG_RETENTION_BYTES="${LOG_RETENTION_BYTES:-4294967296}"
 LOG_SEGMENT_BYTES="${LOG_SEGMENT_BYTES:-1073741824}"
-LOG_RETENTION_CHECK_INTERVAL_MS="${LOG_RETENTION_CHECK_INTERVAL_MS:-300000}"
+LOG_RETENTION_CHECK_INTERVAL_MS="${LOG_RETENTION_CHECK_INTERVAL_MS:-60000}"
 STORAGE_DIR="${STORAGE_DIR:-/mtn}"
 NODE_ID=${NODE_ID:-${HOSTNAME:6}}
 LOG_DIRS=$STORAGE_DIR/$NODE_ID
@@ -51,6 +52,7 @@ update_kafka_configuration() {
     -e "s+^socket.receive.buffer.bytes=.*+socket.receive.buffer.bytes=$SOCKET_RECEIVE_BUFFER_BYTES+" \
     -e "s+^socket.request.max.bytes=.*+socket.request.max.bytes=$SOCKET_REQUEST_MAX_BYTES+" \
     -e "s+^log.retention.hours=.*+log.retention.hours=$LOG_RETENTION_HOURS+" \
+    -e "s+^log.retention.bytes=.*+log.retention.bytes=$LOG_RETENTION_BYTES+" \
     -e "s+^log.segment.bytes=.*+log.segment.bytes=$LOG_SEGMENT_BYTES+" \
     -e "s+^log.retention.check.interval.ms=.*+log.retention.check.interval.ms=$LOG_RETENTION_CHECK_INTERVAL_MS+" \
     -e "s+^node.id=.*+node.id=$NODE_ID+" \
